@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致季诀先生 | 生日快乐</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserratserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- 自动播放的背景音乐 -->
+    <audio id="background-music" loop autoplay>
+        <source src="music.m4a" type="audio/mpeg">
+        您的浏览器不支持音频播放
+    </audio>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF0066', // 霓虹粉
+                        secondary: '#00FFFF', // 霓虹蓝
+                        dark: '#121212', // 深黑色
+                        light: '#F8F8F8', // 亮白色
+                        neutral: '#333333', // 中性灰
+                        'neutral-light': '#666666', // 浅灰
+                    },
+                    fontFamily: {
+                        bebas: ['Bebas Neue', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')",
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 0 8px currentColor;
+            }
+            .neon-border {
+                box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+            }
+            .tape-texture {
+                background-image: repeating-linear-gradient(
+                    45deg,
+                    rgba(0,0,0,0.05),
+                    rgba(0,0,0,0.05) 1px,
+                    transparent 1px,
+                    transparent 10px
+                );
+            }
+            .record-spin {
+                animation: spin 20s linear infinite;
+            }
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            .hover-scale {
+                transition: transform 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: scale(1.05);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+            .letter-appear {
+                animation: fadeIn 0.5s ease forwards;
+                opacity: 0;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .heart-beat {
+                animation: heartbeat 1.5s ease-in-out infinite;
+            }
+            @keyframes heartbeat {
+                0% { transform: scale(1); }
+                14% { transform: scale(1.1); }
+                28% { transform: scale(1); }
+                42% { transform: scale(1.1); }
+                70% { transform: scale(1); }
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark text-light font-inter antialiased overflow-x-hidden">
+    <!-- Noise texture overlay -->
+    <div class="fixed inset-0 opacity-10 pointer-events-none bg-noise z-50"></div>
+
+    <!-- Header with video -->
+    <header class="relative">
+        <!-- Header Video -->
+            <div class="w-full h-[50vh] md:h-[70vh] overflow-hidden">
+                <video id="header-video" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+                    <source src="video.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放
+                </video>
+                <!-- Video overlay -->
+                <div class="absolute inset-0 bg-dark/50 backdrop-blur-sm flex items-center justify-center">
+                    <h1 class="text-4xl md:text-6xl font-bebas text-primary text-shadow tracking-wider text-center">
+                        季诀先生 · 生日快乐
+                    </h1>
+                </div>
+            </div>
+        
+        <!-- Music control button -->
+        <button id="music-control" class="fixed bottom-8 right-8 w-14 h-14 bg-primary rounded-full flex items-center justify-center text-dark text-2xl z-50 hover:bg-primary/80 transition-all duration-300 neon-border">
+            <i class="fa fa-music"></i>
+        </button>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <div class="inline-block mb-8">
+                <div class="relative w-32 h-32 md:w-48 md:h-48 mx-auto">
+                    <div class="absolute inset-0 bg-primary/30 rounded-full record-spin"></div>
+                    <div class="absolute inset-4 bg-dark rounded-full flex items-center justify-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center neon-border">
+                            <i class="fa fa-heart text-dark text-xl heart-beat"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-[clamp(1.5rem,5vw,2.5rem)] font-montserrat text-light/90 max-w-3xl mx-auto">
+                祝你生日快乐 <i class="fa fa-heart text-primary heart-beat"></i>
+            </p>
+        </section>
+
+        <!-- Birthday Message Section -->
+        <section class="mb-16 max-w-3xl mx-auto">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bebas mb-8 text-center text-secondary text-shadow">
+                生日祝福
+            </h2>
+            
+            <div class="bg-neutral/20 backdrop-blur-md rounded-lg p-8 md:p-10 border border-primary/30 hover-scale">
+                <div class="space-y-6 text-light/90 leading-relaxed text-lg">
+                    <p class="indent-8">给季诀先生:</p>
+                    
+                    <p class="indent-8">
+                        见字如面！此时的我刚刚画完送你的画，拿起手机想对你说些什么，但是思来想去不知道用什么身份来写，就当是你的电子朋友吧，首先祝你生日快乐，并且每天快乐~你总说你老了，但是你明明比和我同龄的人更帅，更男人，我印象里的你一点也没有变化，实际上还很年轻，还有很多很多的以后，我们相识于网络，你有和你更好的朋友来祝福你，可是我还是希望增添我一个小小的祝愿，希望你以后都能过上自己想要的随心所欲的生活，允许我在今天贪心的想做一回你的朋友，在游戏里认识了你，一开始对你有很深的误会，但直到我分手伤心（对于当时的我来说分手是天塌啦）只有你还理我，告诉我一些事情，我觉得你真的是当时生活里的光，接触下来才发现你的格外真诚，虽然你每天淡淡的，但我的第六感告诉我，这不是真的你，你会不会也有想不明白的伤心事（也许是我并不了解你多想了，如果是多想了就当是一个多余的祝福，谁会嫌祝福多呢）好希望你以后能更加鲜活，不管是想骂人，还是想做什么幼稚的事情，想做就做，只要你开心想的通透的人一般经历的太多，愿你以后真的快乐。
+                    </p>
+                    
+                    <p class="indent-8">
+                        人和人遇见，是一种缘分，无关结局，游戏是虚拟的，但心意却是炙热的，谢谢你和我聊的天，谢谢你送我的礼物，谢谢你对我的劝解安慰，谢谢你教我结局不是那么重要，在你身上学到了很多东西，也许这只是你并不在乎的小事，只是你无聊的消遣，但我愿意做你无聊时候用来打发时间的人，时间会带走很多，也许很久很久未来崇拜和爱慕会消散，但我的心里总会有一段记忆是你，有缘无分，一切都是心甘情愿，且我发誓永不背叛，但比起非得讨要一个结局，我更愿你一生顺遂，平安快乐，山水一程，已是三生有幸。
+                    </p>
+                    
+                    <p class="indent-8">
+                        最后，再再再次祝你生日快乐呀，不知道今天你还有没有搓麻将，有没有吃大餐，要无忧无虑没烦恼噢，我画了一张关于你的画，笨笨的我也没什么能送给你的了，只好画下我眼里的你，也许没那么好看，但一定载满我的祝福，同时这封信也纪念认识你的第三年(◍＞◡＜◍)
+                    </p>
+                </div>
+                
+                <div class="mt-10 text-right">
+                    <p class="text-primary text-xl font-semibold">——小羊</p>
+                    <p class="text-light/70 mt-2" id="current-date"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section class="mb-16 max-w-3xl mx-auto">
+        </section>
+
+        <!-- Video Section -->
+    <section class="mb-16 max-w-4xl mx-auto">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bebas mb-8 text-center text-primary text-shadow">
+            祝福视频
+        </h2>
+        
+        <div class="bg-neutral/20 backdrop-blur-md rounded-lg p-8 border border-primary/30 hover-scale">
+            <div class="aspect-video bg-dark rounded-lg overflow-hidden mb-6">
+                <video id="content-video" controls class="w-full h-full object-contain" preload="metadata">
+                    <source src="video.mp4" type="video/mp4">
+                    你的浏览器不支持视频播放
+                </video>
+            </div>
+            
+            <div class="text-center">
+                <p class="text-light/80">以上是为您准备的祝福视频</p>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-neutral border-t border-neutral-light/20">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-light/50 text-sm">
+                © <span id="current-year">2025</span> 送给季诀先生的生日祝福
+            </p>
+            <p class="text-light/40 text-xs mt-2">
+                愿你平安喜乐，一生顺遂
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Set current date and year
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('zh-CN', options);
+            document.getElementById('current-year').textContent = now.getFullYear();
+            
+            // Animate message letters
+            animateMessage();
+        });
+        
+        // Animate message letters to appear one by one
+        function animateMessage() {
+            const messageContainer = document.querySelector('section:nth-of-type(2) .space-y-6');
+            if (!messageContainer) return;
+            
+            const paragraphs = messageContainer.querySelectorAll('p');
+            let delay = 0;
+            
+            paragraphs.forEach(paragraph => {
+                const text = paragraph.textContent;
+                paragraph.textContent = '';
+                paragraph.classList.add('whitespace-pre-wrap');
+                
+                for (let i = 0; i < text.length; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = text[i];
+                    span.classList.add('letter-appear');
+                    span.style.animationDelay = `${delay}ms`;
+                    paragraph.appendChild(span);
+                    delay += 10;
+                }
+                
+                delay += 500; // Add delay between paragraphs
+            });
+        }
+        
+        // 背景音乐控制
+        const backgroundMusic = document.getElementById('background-music');
+        const musicControl = document.getElementById('music-control');
+        let isMusicPlaying = true;
+        
+        // 尝试播放背景音乐和视频（处理浏览器自动播放限制）
+        function tryPlayMedia() {
+            // 播放音乐
+            backgroundMusic.play().catch(error => {
+                console.log('无法自动播放音乐:', error);
+                // 保持音乐控制按钮可见，用户可以手动点击播放
+            });
+            
+            // 播放视频
+            const headerVideo = document.getElementById('header-video');
+            if (headerVideo) {
+                headerVideo.play().catch(error => {
+                    console.log('无法自动播放视频:', error);
+                    // 可以在这里添加备用行为，如显示静态图片
+                });
+            }
+            
+            // 预加载内容区域的视频
+            const contentVideo = document.getElementById('content-video');
+            if (contentVideo) {
+                contentVideo.load().catch(error => {
+                    console.log('无法预加载内容视频:', error);
+                });
+            }
+        }
+        
+        // 当用户与页面交互时尝试播放媒体
+        document.addEventListener('click', tryPlayMedia, { once: true });
+        document.addEventListener('touchstart', tryPlayMedia, { once: true });
+        
+        // 音乐控制按钮
+        musicControl.addEventListener('click', function() {
+            if (isMusicPlaying) {
+                backgroundMusic.pause();
+                musicControl.innerHTML = '<i class="fa fa-pause"></i>';
+            } else {
+                backgroundMusic.play();
+                musicControl.innerHTML = '<i class="fa fa-music"></i>';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        });
+        
+        // 监听音乐播放状态
+        backgroundMusic.addEventListener('playing', function() {
+            isMusicPlaying = true;
+            musicControl.innerHTML = '<i class="fa fa-music"></i>';
+        });
+        
+        backgroundMusic.addEventListener('pause', function() {
+            isMusicPlaying = false;
+            musicControl.innerHTML = '<i class="fa fa-pause"></i>';
+        });
+    </script>
+</body>
+</html>
